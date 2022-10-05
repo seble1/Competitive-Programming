@@ -1,37 +1,26 @@
 class Solution {
     public String sortSentence(String s) {
         
-        StringBuilder sortedSentence = new StringBuilder();
-        String[] sentence = s.split(" ");
+       Map<Integer,String> words = new HashMap<>();
         
-        int unsorted = sentence.length;
+       for(String word: s.split(" ")){
+           
+          int lastIndex = word.length()-1;
+          int index = word.charAt(lastIndex) - '0';
+          System.out.println(index);
+          String value = word.substring(0, lastIndex);
+          words.put(index,value );
+      }
         
-        while(unsorted!=0){
-            
-            
-            for(int i=0;i<unsorted-1;i++){
-                
-                int current = (int)(sentence[i].charAt(sentence[i].length()-1));
-                int next = (int)(sentence[i+1].charAt(sentence[i+1].length()-1));
-                if(current>next){
-                    String temp = sentence[i];
-                    sentence[i] = sentence[i+1];
-                    sentence[i+1] = temp;
-                }
-                
-                
-            }
-            unsorted--;
-            
-        }
+      StringBuilder sortedSentence = new StringBuilder();
+      int length = s.split(" ").length;
         
-        for(int i=0;i<sentence.length;i++){
-            
-            String word = sentence[i].substring(0,sentence[i].length()-1);
-            sortedSentence.append(word + " ");
-        }
+      for(int i=1;i<=length;i++){
+          String word = words.get(i);
+          sortedSentence.append(word + " ");
+      }
         
-        return sortedSentence.toString().trim();
-            
+      return sortedSentence.toString().trim();
+        
     }
 }
