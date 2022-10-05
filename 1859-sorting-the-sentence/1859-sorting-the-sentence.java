@@ -13,10 +13,10 @@ class Solution {
       }
         
       StringBuilder sortedSentence = new StringBuilder();
-      int length = s.split(" ").length;
+     
         
-      for(int i=1;i<=length;i++){
-          String word = words.get(i);
+      for(int key:words.keySet()){
+          String word = words.get(key);
           sortedSentence.append(word + " ");
       }
         
